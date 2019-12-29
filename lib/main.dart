@@ -1,44 +1,64 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
+import 'dart:async';
 import 'HomeScreen.dart';
 import 'SignUpScreen.dart';
 
-void main() => runApp(App());
+void main() => runApp(Start());
 
-class App extends StatelessWidget 
+class Start extends StatefulWidget 
+{
+  @override
+  App createState() => new App();
+  
+}
+
+class App extends State<Start>
 {
   Future<int> _checkFirstTime() async 
   {
-    final prefs = await SharedPreferences.getInstance();
-    final check = prefs.getInt('firstTime');
-    if (check == null)
+    SharedPreferences prefs = await SharedPreferences.getInstance();  
+    bool _seen = (prefs.getBool('seen') ?? false);
+    if (_seen)
     {
-      prefs.setInt('firstTime', 1);
-      return 0;
+      Navigator.of(context).pushReplacement(
+        new MaterialPageRoute(builder: (context) => new HomeScreen())
+      );
     }
-    return 1;
+    else 
+    {
+      prefs.setBool('seen', true);
+      Navigator.of(context).pushReplacement(
+        new MaterialPageRoute(builder: (context) => new SignUpScreen())
+      );
+    }
+  }  
+
+  @override
+  void initState() 
+  {
+    super.initState();
+    new Timer(new Duration(seconds: 1), () {
+      _checkFirstTime();
+    });
   }
 
   @override
-  Widget build(BuildContext context) 
-  {
-    if (_checkFirstTime() == 0)
-    {
-      return MaterialApp
-      (
-        debugShowCheckedModeBanner: false,
-        home: SignUpScreen(),
-      );
-    }
-    else
-    {
-      return MaterialApp
-      (
-        debugShowCheckedModeBanner: false,
-        home: HomeScreen(),
-      );
-    }
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: LoadScreen(),
+    );
   }
 }
 
+class LoadScreen extends StatelessWidget
+{
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      body: new Center(
+        child: new Text('Loading...'),
+      ),
+    );
+  }
+}
