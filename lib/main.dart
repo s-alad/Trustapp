@@ -11,54 +11,39 @@ class Start extends StatefulWidget
 {
   @override
   App createState() => new App();
-  
 }
 
 class App extends State<Start>
 {
-  Future<int> _checkFirstTime() async 
+  bool _seen;
+  
+  Future<void> _checkFirstTime() async 
   {
     SharedPreferences prefs = await SharedPreferences.getInstance();  
-    bool _seen = (prefs.getBool('seen') ?? false);
-    if (_seen)
-    {
-      Navigator.of(context).pushReplacement(
-        new MaterialPageRoute(builder: (context) => new HomeScreen())
-      );
-    }
-    else 
-    {
-      prefs.setBool('seen', true);
-      Navigator.of(context).pushReplacement(
-        new MaterialPageRoute(builder: (context) => new SignUpScreen())
-      );
-    }
+    _seen = (prefs.getBool('seen') ?? false);
   }  
+
+  Future<void> _updateFirstTime() async
+  {
+    SharedPreferences prefs = await SharedPreferences.getInstance();  
+    _seen = true;
+  }
 
   @override
   void initState() 
   {
     super.initState();
-    new Timer(new Duration(seconds: 1), () {
-      _checkFirstTime();
-    });
+    _checkFirstTime();
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) 
+  {
     return MaterialApp(
-      home: LoadScreen(),
+      home: _seen ? HomeScreen() : SignUpScreen(),
     );
   }
+
 }
 
-class LoadScreen extends StatelessWidget
-{
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      body: new Center(
-        child: new Text('Loading...'),
-      ),
-    );
-  }
-}
+
