@@ -15,7 +15,7 @@ class Start extends StatefulWidget
 
 class App extends State<Start>
 {
-  bool _seen;
+  bool _seen = false;
   
   Future<void> _checkFirstTime() async 
   {
@@ -39,11 +39,13 @@ class App extends State<Start>
   @override
   Widget build(BuildContext context) 
   {
-    return MaterialApp(
-      home: _seen ? HomeScreen() : SignUpScreen(),
+    bool seen = _seen;
+    if (_seen == false) {_updateFirstTime();}
+    return MaterialApp( 
+      debugShowCheckedModeBanner: false,
+      home: seen ? HomeScreen() : SignUpScreen(),
     );
-  }
-
+  } 
 }
 
 

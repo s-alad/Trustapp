@@ -81,7 +81,7 @@ class TopHeader extends StatelessWidget
         children: <Widget>[
           Align(
             child: Text(
-              '<dec 30>',
+              '<date>',
               style: (TextStyle(color: Color(0xFF212121), fontSize: 22, fontFamily: 'Roboto-Medium')),
             ),
           ),

@@ -7,8 +7,9 @@ class SignUpScreen extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Text('first time splash screen')
     );
   }
 }
