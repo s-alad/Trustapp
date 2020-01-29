@@ -30,6 +30,17 @@ class CreateButton extends StatelessWidget
             ),
           ),
           decoration: new BoxDecoration(
+            boxShadow: [
+            BoxShadow(
+              color: Colors.grey,
+              blurRadius: 6.0, 
+              spreadRadius: 0.0, 
+              offset: Offset(
+                0.0,
+                4.0, 
+              ),
+            )
+            ],
             color: Color(0xFF212121),
             borderRadius: new BorderRadius.all(Radius.circular(12))
           )
@@ -50,11 +61,22 @@ class TaskContainer extends StatelessWidget
     alignment: Alignment.center,
       child: Container(
         alignment: Alignment.bottomCenter,
-        height: h * .16,
+        height: h * .14,
         width: w * .8,
         margin: EdgeInsets.only(bottom: h * .024),
         decoration: new BoxDecoration(
-          color: Color(0xFFA1FF9D),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey,
+              blurRadius: 6.0, 
+              spreadRadius: 0.0, 
+              offset: Offset(
+                0.0,
+                4.0, 
+              ),
+            )
+            ],
+          color: Color(0xFFa3ff9e),
           borderRadius: new BorderRadius.all(Radius.circular(12))
         ),
       ),
@@ -62,28 +84,30 @@ class TaskContainer extends StatelessWidget
   }
 }
 
-class TopHeader extends StatelessWidget
+class Header extends StatelessWidget
 {
   Widget build(BuildContext context)
   {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    String date;
+    var now = new DateTime.now();
+    var month = ['january','febuary','march','april','may','june','july','august','september','october','november','december'];
+    String date = ('${month[now.month].toUpperCase()}, ${now.day}');
     String name;
     String total;
 
     return Container(
       width: w,
-      height: h * .25,
+      height: h * .2,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Align(
             child: Text(
-              '<date>',
+              date,
               style: (TextStyle(color: Color(0xFF212121), fontSize: 22, fontFamily: 'Roboto-Medium')),
-            ),
+            )
           ),
           Align(
             child: Text(
@@ -103,6 +127,52 @@ class TopHeader extends StatelessWidget
   }
 }
 
+class Body extends StatelessWidget
+{
+  @override
+  Widget build(BuildContext context)
+  {
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
+
+    return Column(
+      children: <Widget>[
+        Header(),
+        //=============================================================================================
+        Align(
+          alignment: Alignment(0, 1),
+          child: Container( 
+            height: h * .8, 
+            width: w,  
+            decoration: new BoxDecoration(
+              border: Border.all(color: Color(0xFF707070)),
+              color: Color(0xFFFFFFF0),
+              borderRadius: new BorderRadius.only(
+                topLeft: const Radius.circular(32),
+                topRight: const Radius.circular(32),
+              )
+            ),
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  child: ListView(
+                    children: <Widget>[
+                      TaskContainer(),
+                      TaskContainer(),
+                      TaskContainer(),
+                    ],
+                  ),
+                ),
+                CreateButton(),
+              ],
+            )
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class HomeScreen extends StatelessWidget 
 {
 	@override
@@ -113,40 +183,7 @@ class HomeScreen extends StatelessWidget
 
 		return Scaffold(
       backgroundColor: Colors.white,
-			body: Column(
-        children: <Widget>[
-          TopHeader(),
-          Align(
-            alignment: Alignment(0, 1),
-            child: Container(
-              height: h * .75,
-              width: w,  
-              decoration: new BoxDecoration(
-                border: Border.all(color: Color(0xFF707070)),
-                color: Color(0xFFFFFFF0),
-                borderRadius: new BorderRadius.only(
-                  topLeft: const Radius.circular(32),
-                  topRight: const Radius.circular(32),
-                )
-              ),
-              child: Column(
-                children: <Widget>[
-                  Expanded(
-                    child: ListView(
-                      children: <Widget>[
-                        TaskContainer(),
-                        TaskContainer(),
-                        TaskContainer(),
-                      ],
-                    ),
-                  ),
-                  CreateButton(),
-                ],
-              )
-            ),
-          ),
-        ],
-      ),
+			body: Body(),
 		);
 	}
 } 
