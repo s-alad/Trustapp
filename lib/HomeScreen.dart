@@ -9,43 +9,45 @@ class CreateButton extends StatelessWidget
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
-    return GestureDetector(
+    return GestureDetector(     
       onTap: ()
       {
-
+        print('tapped');
       },
-      
-      child: Align(
-        alignment: Alignment.center,
-        child: Container(
-          alignment: Alignment.bottomCenter,
-          height: h * .08,
-          width: w * .8,
-          margin: EdgeInsets.only(bottom: h * .024),
-          child: Center(
-            child: Text(
-              'CREATE NEW TASK',
-              textAlign: TextAlign.center,
-              style: (TextStyle(color: Colors.white, fontSize: 24, fontFamily: 'Roboto-Medium')),
-            ),
-          ),
-          decoration: new BoxDecoration(
-            boxShadow: [
-            BoxShadow(
-              color: Colors.grey,
-              blurRadius: 6.0, 
-              spreadRadius: 0.0, 
-              offset: Offset(
-                0.0,
-                4.0, 
+      child: Padding(
+        padding: EdgeInsets.only(top: 12),
+        child: Align(
+          alignment: Alignment.center,
+          child: Container(
+            alignment: Alignment.bottomCenter,
+            height: h * .08,
+            width: w * .8,
+            margin: EdgeInsets.only(bottom: h * .024),
+            child: Center(
+              child: Text(
+                'CREATE NEW TASK',
+                textAlign: TextAlign.center,
+                style: (TextStyle(color: Colors.white, fontSize: 24, fontFamily: 'Roboto-Medium')),
               ),
+            ),
+            decoration: new BoxDecoration(
+              boxShadow: [
+              BoxShadow(
+                color: Colors.grey,
+                blurRadius: 6.0, 
+                spreadRadius: 0.0, 
+                offset: Offset(
+                  0.0,
+                  4.0, 
+                ),
+              )
+              ],
+              color: Color(0xFF212121),
+              borderRadius: new BorderRadius.all(Radius.circular(12))
             )
-            ],
-            color: Color(0xFF212121),
-            borderRadius: new BorderRadius.all(Radius.circular(12))
-          )
+          ),
         ),
-      ),
+      )
     );
   }
 }
@@ -197,8 +199,7 @@ class Body extends StatelessWidget
         ),
         child: Column(
           children: <Widget>[
-            Container(
-              height: h * .6,
+            Expanded(
               child: ListView(
                 physics: BouncingScrollPhysics(),
                 children: <Widget>[
@@ -211,10 +212,7 @@ class Body extends StatelessWidget
                 ],
               ),
             ),
-            Container(
-              height: h * .19,
-              child: CreateButton(),
-            )
+            CreateButton(),
           ],
         )
       ),
