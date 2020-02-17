@@ -9,9 +9,7 @@ class SignUpScreen extends StatelessWidget
   {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
-        child: Text('first time splash screen'),
-      )
+      body: Text('first time splash screen')
     );
   }
 }
