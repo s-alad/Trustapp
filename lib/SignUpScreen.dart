@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart';
-
 
 class SignUpScreen extends StatelessWidget 
 {
@@ -9,7 +7,9 @@ class SignUpScreen extends StatelessWidget
   {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Text('first time splash screen')
+      body: Center(
+        child: Text('first time splash screen')
+        )
     );
   }
 }
