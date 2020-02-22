@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+<<<<<<< HEAD
 import 'UI.dart';
+=======
+import 'ui.dart';
+>>>>>>> 8303c030086603deadb9dc35b009118b20d9557f
 
 class CreateScreen extends StatelessWidget 
 {
@@ -75,11 +79,19 @@ class CreateBody extends StatelessWidget
           )
         ),
         child: Container(
+<<<<<<< HEAD
           margin: EdgeInsets.only(left: 32.0, right: 32.0),
           child: Column(
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(top: 36),    
+=======
+          margin: EdgeInsets.only(left: 20.0, right: 20.0),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(top: 50),    
+>>>>>>> 8303c030086603deadb9dc35b009118b20d9557f
                 child: TextField(
                   
                     obscureText: false,
@@ -94,6 +106,7 @@ class CreateBody extends StatelessWidget
                 )        
               ),
               Padding(
+<<<<<<< HEAD
                 padding: EdgeInsets.only(top: 20),    
                 child: TextField(
                   obscureText: false,
@@ -107,6 +120,24 @@ class CreateBody extends StatelessWidget
               ),
               Padding(
                 padding: EdgeInsets.only(top: 20, right: 75, left: 75),    
+=======
+                padding: EdgeInsets.only(top: 40),    
+                child: TextField(
+                  
+                    obscureText: false,
+                    decoration: InputDecoration(
+                    border: new OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(
+                    const Radius.circular(10.0),
+                  ),
+                    ),
+                    labelText: 'Description of task',
+                ), 
+                )        
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 40, right: 75, left: 75),    
+>>>>>>> 8303c030086603deadb9dc35b009118b20d9557f
                 child: TextField(
                   
                     keyboardType: TextInputType.number,

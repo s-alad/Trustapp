@@ -118,6 +118,7 @@ class DatePicker extends StatelessWidget
   {
     double h = MediaQuery.of(context).size.height;
 
+<<<<<<< HEAD
     return Column(
       children: <Widget>[
         SizedBox(
@@ -139,6 +140,17 @@ class DatePicker extends StatelessWidget
           ),
         ),
       ],
+=======
+    return SizedBox(
+      height: h * .1,
+      child: CupertinoDatePicker(
+        backgroundColor: Color(0xFFFFFFF0),
+        initialDateTime: _dateTime,
+        mode: CupertinoDatePickerMode.dateAndTime,
+        onDateTimeChanged: (dateTime) {
+        }
+      )
+>>>>>>> 8303c030086603deadb9dc35b009118b20d9557f
     );
   }
 }
