@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+<<<<<<< HEAD
+=======
+import 'dart:async';
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
 import 'HomeScreen.dart';
 import 'SignUpScreen.dart';
 
@@ -33,7 +37,6 @@ class App extends State<Start>
 
   _updateFirstTime() async
   {
-    SharedPreferences prefs = await SharedPreferences.getInstance();  
     _seen = true;
     prefs.setBool('seen', true);
   }

@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+<<<<<<< HEAD
 import 'UI.dart';
+=======
+<<<<<<< HEAD
+import 'UI.dart';
+=======
+import 'ui.dart';
+>>>>>>> 8303c030086603deadb9dc35b009118b20d9557f
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
 
 class TaskContainer extends StatelessWidget
 {
@@ -87,7 +95,15 @@ class Header extends StatelessWidget
     double h = MediaQuery.of(context).size.height;
     var now = new DateTime.now();
     var month = ['january','febuary','march','april','may','june','july','august','september','october','november','december'];
+<<<<<<< HEAD
     String date = ('${month[now.month - 1].toUpperCase()}, ${now.day}');
+=======
+<<<<<<< HEAD
+    String date = ('${month[now.month - 1].toUpperCase()}, ${now.day}');
+=======
+    String date = ('${month[now.month].toUpperCase()}, ${now.day}');
+>>>>>>> 8303c030086603deadb9dc35b009118b20d9557f
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
     String name = '<NAME>';
     String total = '<TOTAL>';
 
@@ -164,13 +180,24 @@ class _Body extends State<Body>
                   TaskContainer(name: "<task name>", amount: "\$amt", duedate: "<date>"),
                   TaskContainer(name: "<task name>", amount: "\$amt", duedate: "<date>"),
                   TaskContainer(name: "<task name>", amount: "\$amt", duedate: "<date>"),
+<<<<<<< HEAD
                   TaskContainer(name: "<task name>", amount: "\$amt", duedate: "<date>"),
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8303c030086603deadb9dc35b009118b20d9557f
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
                 ],
               ),
             ),
             Container(
+<<<<<<< HEAD
               height: h * .15,
               //color: Colors.red,
+=======
+              height: h * .19,
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
               child: CreateButton(state: true,),
             )
           ],

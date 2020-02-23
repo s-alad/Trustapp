@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'package:sqflite/sqflite.dart';
 import 'dart:async';
 import 'package:path/path.dart';
@@ -77,3 +78,16 @@ class Task
     return 'Task{id: $id, name: $name, discription: $discription, amount: $amount, date: $date}';
   }
 }
+=======
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class Persist extends StatelessWidget
+{
+  Widget build(BuildContext context)
+  {
+    
+  }
+}
+
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676

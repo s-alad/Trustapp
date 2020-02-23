@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+<<<<<<< HEAD
 import 'UI.dart';
+=======
+<<<<<<< HEAD
+import 'UI.dart';
+=======
+import 'ui.dart';
+>>>>>>> 8303c030086603deadb9dc35b009118b20d9557f
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
 
 class CreateScreen extends StatelessWidget 
 {
@@ -29,6 +37,7 @@ class CreateHeader extends StatelessWidget
     return Container(
       width: w,
       height: h * .2,
+<<<<<<< HEAD
       child: Padding(
         padding: EdgeInsets.only(top: 30,),
         child: Column(
@@ -50,6 +59,26 @@ class CreateHeader extends StatelessWidget
           ],
         ),
       ),
+=======
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Align(
+            child: Text(
+              'CREATE NEW TASK',
+              style: (TextStyle(color: Color(0xFF212121), fontSize: 34, fontFamily: 'Roboto-Bold', height: 1)),
+            ),
+          ),
+          Align(
+            child: Text(
+              'other text idk',
+              style: (TextStyle(color: Color(0xFF212121), fontSize: 22, fontFamily: 'Roboto-Medium', height: 1)),
+            ),
+          ),
+        ],
+      )
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
     );
   }
 }
@@ -64,7 +93,13 @@ class CreateBody extends StatelessWidget
 
     return Align(
       alignment: Alignment(0, 1),
+<<<<<<< HEAD
       child: Container(      
+=======
+      
+      child: Container( 
+        
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
         height: h * .8, 
         width: w,  
         decoration: new BoxDecoration(
@@ -73,14 +108,22 @@ class CreateBody extends StatelessWidget
           borderRadius: new BorderRadius.only(
             topLeft: const Radius.circular(32),
             topRight: const Radius.circular(32),
+<<<<<<< HEAD
           ),
         ),
         child: Container(
+=======
+          )
+        ),
+        child: Container(
+<<<<<<< HEAD
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
           margin: EdgeInsets.only(left: 32.0, right: 32.0),
           child: Column(
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(top: 36),    
+<<<<<<< HEAD
                 child: TextField(
                   obscureText: false,
                   decoration: InputDecoration(
@@ -92,15 +135,44 @@ class CreateBody extends StatelessWidget
                 ),        
               ),
               Padding(
+=======
+=======
+          margin: EdgeInsets.only(left: 20.0, right: 20.0),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(top: 50),    
+>>>>>>> 8303c030086603deadb9dc35b009118b20d9557f
+                child: TextField(
+                  
+                    obscureText: false,
+                    decoration: InputDecoration(
+                    border: new OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(
+                    const Radius.circular(10.0),
+                  ),
+                    ),
+                    labelText: 'Task Name',
+                ), 
+                )        
+              ),
+              Padding(
+<<<<<<< HEAD
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
                 padding: EdgeInsets.only(top: 20),    
                 child: TextField(
                   obscureText: false,
                   decoration: InputDecoration(
+<<<<<<< HEAD
                     border: new OutlineInputBorder(
+=======
+                      border: new OutlineInputBorder(
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
                       borderRadius: const BorderRadius.all(const Radius.circular(10.0))
                     ),
                     labelText: 'Description of task',
                   ), 
+<<<<<<< HEAD
                 ), 
               ),
               Padding(
@@ -117,12 +189,56 @@ class CreateBody extends StatelessWidget
               ), 
               Padding(
                 padding: EdgeInsets.only(top: 24, bottom: 24),
+=======
+                )        
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 20, right: 75, left: 75),    
+=======
+                padding: EdgeInsets.only(top: 40),    
+                child: TextField(
+                  
+                    obscureText: false,
+                    decoration: InputDecoration(
+                    border: new OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(
+                    const Radius.circular(10.0),
+                  ),
+                    ),
+                    labelText: 'Description of task',
+                ), 
+                )        
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 40, right: 75, left: 75),    
+>>>>>>> 8303c030086603deadb9dc35b009118b20d9557f
+                child: TextField(
+                  
+                    keyboardType: TextInputType.number,
+                    
+                    decoration: InputDecoration(
+                    border: new OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(
+                    const Radius.circular(10.0),
+                  ),
+                    ),
+                    labelText: 'Amount to Pledge',
+                ), 
+                )        
+              ), 
+              Padding(
+                padding: EdgeInsets.only(top: 20, bottom: 20),
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
                 child: DatePicker(),
               ),
               CreateButton(state: false),
               GoBackButton(),
             ],
+<<<<<<< HEAD
           ), 
+=======
+          ) 
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
         ),
       ),
     );

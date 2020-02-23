@@ -16,7 +16,17 @@ class CreateButton extends StatelessWidget
       
       onTap: ()
       {
+<<<<<<< HEAD
         if (state == true) {Navigator.push(context, MaterialPageRoute(builder: (context) => CreateScreen()),);}
+=======
+        if (state == true)
+        {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => CreateScreen()),
+          );
+        }
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
         else {Navigator.pop(context);}
       },
       
@@ -64,7 +74,14 @@ class GoBackButton extends StatelessWidget
 
     return GestureDetector(
       
+<<<<<<< HEAD
       onTap: () {Navigator.pop(context);},
+=======
+      onTap: ()
+      {
+        Navigator.pop(context);
+      },
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
       
       child: Align(
         alignment: Alignment.center,
@@ -109,6 +126,7 @@ class DatePicker extends StatelessWidget
   {
     double h = MediaQuery.of(context).size.height;
 
+<<<<<<< HEAD
     return Column(
       children: <Widget>[
         Divider(
@@ -120,6 +138,13 @@ class DatePicker extends StatelessWidget
         ),
         SizedBox(
           height: h * .1,
+=======
+<<<<<<< HEAD
+    return Column(
+      children: <Widget>[
+        SizedBox(
+          height: h * .08,
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
           child: CupertinoDatePicker(
             backgroundColor: Color(0xFFFFFFF0),
             initialDateTime: _dateTime,
@@ -127,6 +152,7 @@ class DatePicker extends StatelessWidget
             onDateTimeChanged: (dateTime) {}
           )
         ),
+<<<<<<< HEAD
         Divider(
           color: Color(0xFF212121),
           thickness: 2.4,
@@ -135,6 +161,10 @@ class DatePicker extends StatelessWidget
         ),
         SizedBox(
           height: h * .1,
+=======
+        SizedBox(
+          height: h * .08,
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
           child: CupertinoDatePicker(
             backgroundColor: Color(0xFFFFFFF0),
             initialDateTime: _dateTime,
@@ -142,6 +172,7 @@ class DatePicker extends StatelessWidget
             onDateTimeChanged: (dateTime) {}
           ),
         ),
+<<<<<<< HEAD
         Divider(
           height: .8,
           color: Color(0xFF212121),
@@ -150,6 +181,20 @@ class DatePicker extends StatelessWidget
           endIndent: 32,
         ),
       ],
+=======
+      ],
+=======
+    return SizedBox(
+      height: h * .1,
+      child: CupertinoDatePicker(
+        backgroundColor: Color(0xFFFFFFF0),
+        initialDateTime: _dateTime,
+        mode: CupertinoDatePickerMode.dateAndTime,
+        onDateTimeChanged: (dateTime) {
+        }
+      )
+>>>>>>> 8303c030086603deadb9dc35b009118b20d9557f
+>>>>>>> 82539e33e3758ad384fbae3f6ff232fe2e7eb676
     );
   }
 }
