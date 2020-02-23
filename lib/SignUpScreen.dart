@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart';
-
 
 class SignUpScreen extends StatelessWidget 
 {
@@ -8,8 +6,10 @@ class SignUpScreen extends StatelessWidget
   Widget build(BuildContext context) 
   {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Text('first time splash screen')
+      backgroundColor: Colors.red,
+      body: Center(
+        child: Text('first time splash')
+        )
     );
   }
 }

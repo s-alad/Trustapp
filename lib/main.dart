@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sqflite/sqflite.dart';
-import 'dart:async';
 import 'HomeScreen.dart';
 import 'SignUpScreen.dart';
 
@@ -17,30 +15,36 @@ class App extends State<Start>
 {
   bool _seen = false;
   
-  Future<void> _checkFirstTime() async 
-  {
-    SharedPreferences prefs = await SharedPreferences.getInstance();  
-    _seen = (prefs.getBool('seen') ?? false);
-  }  
-
-  Future<void> _updateFirstTime() async
-  {
-    SharedPreferences prefs = await SharedPreferences.getInstance();  
-    _seen = true;
-  }
-
   @override
   void initState() 
   {
-    super.initState();
+    print(1);
     _checkFirstTime();
+    super.initState();
+  }
+
+  _checkFirstTime() async 
+  {
+    print(1.1);
+    SharedPreferences prefs = await SharedPreferences.getInstance();  
+    _seen = (prefs.getBool('seen') ?? false);
+    print(1.2);
+  }  
+
+  _updateFirstTime() async
+  {
+    SharedPreferences prefs = await SharedPreferences.getInstance();  
+    _seen = true;
+    prefs.setBool('seen', true);
   }
 
   @override
   Widget build(BuildContext context) 
   {
-    bool seen = _seen;
+    print(2);
+    bool seen = _seen;  
     if (_seen == false) {_updateFirstTime();}
+    print(2.1);
     return MaterialApp( 
       debugShowCheckedModeBanner: false,
       home: seen ? HomeScreen() : SignUpScreen(),
