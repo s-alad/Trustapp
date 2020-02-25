@@ -13,12 +13,11 @@ class Start extends StatefulWidget
 
 class App extends State<Start>
 {
-  bool _seen = false;
+  bool _seen;
   
   @override
   void initState() 
   {
-    print(1);
     _checkFirstTime();
     super.initState();
   }
@@ -27,8 +26,10 @@ class App extends State<Start>
   {
     print(1.1);
     SharedPreferences prefs = await SharedPreferences.getInstance();  
-    _seen = (prefs.getBool('seen') ?? false);
-    print(1.2);
+    setState( () 
+    {
+      _seen = (prefs.getBool('seen') ?? false);
+    });
   }  
 
   _updateFirstTime() async
@@ -38,13 +39,12 @@ class App extends State<Start>
     prefs.setBool('seen', true);
   }
 
-  @override
   Widget build(BuildContext context) 
   {
-    print(2);
-    bool seen = _seen;  
+    if (_seen == null) return Container();
     if (_seen == false) {_updateFirstTime();}
-    print(2.1);
+
+    bool seen = _seen;  
     return MaterialApp( 
       debugShowCheckedModeBanner: false,
       home: seen ? HomeScreen() : SignUpScreen(),
