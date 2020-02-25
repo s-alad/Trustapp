@@ -47,7 +47,7 @@ class App extends State<Start>
     bool seen = _seen;  
     return MaterialApp( 
       debugShowCheckedModeBanner: false,
-      home: seen ? HomeScreen() : SignUpScreen(),
+      home: HomeScreen(),
     );
   } 
 }
