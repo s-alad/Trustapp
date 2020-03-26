@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:trust/database_helper.dart';
 import 'UI.dart';
+
+final dbHelper = DatabaseHelper.instance;
 
 class TaskContainer extends StatelessWidget
 {
@@ -138,7 +141,7 @@ class _Body extends State<Body>
   {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-
+    _query();
     return Align(
       alignment: Alignment(0, 1),
       child: Container( 
@@ -171,7 +174,7 @@ class _Body extends State<Body>
             Container(
               height: h * .15,
               //color: Colors.red,
-              child: CreateButton(state: true,),
+              child: CreateButton(state: true),
             )
           ],
         )
@@ -196,4 +199,7 @@ class HomeScreen extends StatelessWidget
       ),
 		);
 	}
-} 
+}
+void _query() async{
+  final allRows = await dbHelper.queryRowCount();
+  } 

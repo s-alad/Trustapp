@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'UI.dart';
+import 'database_helper.dart';
+
+
+final dbHelper = DatabaseHelper.instance;
 
 class CreateScreen extends StatelessWidget 
 {
@@ -56,6 +60,10 @@ class CreateHeader extends StatelessWidget
 
 class CreateBody extends StatelessWidget
 {
+
+  final nameController = TextEditingController();
+  final descriptionController = TextEditingController();
+  final amountController = TextEditingController();
   @override
   Widget build(BuildContext context)
   {
@@ -82,6 +90,7 @@ class CreateBody extends StatelessWidget
               Padding(
                 padding: EdgeInsets.only(top: 36),    
                 child: TextField(
+                  controller: nameController,
                   obscureText: false,
                   decoration: InputDecoration(
                     border: new OutlineInputBorder(
@@ -94,6 +103,7 @@ class CreateBody extends StatelessWidget
               Padding(
                 padding: EdgeInsets.only(top: 20),    
                 child: TextField(
+                  controller: descriptionController,
                   obscureText: false,
                   decoration: InputDecoration(
                     border: new OutlineInputBorder(
@@ -106,6 +116,7 @@ class CreateBody extends StatelessWidget
               Padding(
                 padding: EdgeInsets.only(top: 20, right: 75, left: 75),    
                 child: TextField(
+                  controller: amountController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     border: new OutlineInputBorder(
@@ -119,8 +130,8 @@ class CreateBody extends StatelessWidget
                 padding: EdgeInsets.only(top: 24, bottom: 24),
                 child: DatePicker(),
               ),
-              CreateButton(state: false),
-              GoBackButton(),
+              Addtask(Text(nameController.text),Text(descriptionController.text),Text(amountController.text)),
+              BackButton(),
             ],
           ), 
         ),
@@ -128,4 +139,68 @@ class CreateBody extends StatelessWidget
     );
   }
 }
+class Addtask extends StatelessWidget
+{
+  static Text objectname;
+  static Text objectdescription;
+  static Text objectamount;
 
+  Addtask(objectname,objectdescription,objectamount);
+  Widget build(BuildContext context)
+  {
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
+
+    return GestureDetector(
+      
+      onTap: ()
+      {
+        print(objectname);
+      },
+      
+      child: Align(
+        alignment: Alignment.center,
+        child: Container(
+          alignment: Alignment.bottomCenter,
+          height: h * .08,
+          width: w * .8,
+          margin: EdgeInsets.only(bottom: h * .024),
+          child: Center(
+            child: Text(
+              'CREATE NEW TASK',
+              textAlign: TextAlign.center,
+              style: (TextStyle(color: Colors.white, fontSize: 24, fontFamily: 'Roboto-Medium')),
+            ),
+          ),
+          decoration: new BoxDecoration(
+            boxShadow: [
+            BoxShadow(
+              color: Colors.grey,
+              blurRadius: 6.0, 
+              spreadRadius: 0.0, 
+              offset: Offset(
+                0.0,
+                4.0, 
+              ),
+            )
+            ],
+            color: Color(0xFF212121),
+            borderRadius: new BorderRadius.all(Radius.circular(12))
+          )
+        ),
+      ),
+    );
+  }
+}
+
+
+void _insert() async {
+  Map<String, dynamic> row = {
+    DatabaseHelper.columnName : "I should have done this earlier",
+    DatabaseHelper.columnAmount : 333,
+    DatabaseHelper.columnDate : 2020-03-27,
+    DatabaseHelper.columnDescription : "This is the description",
+  };
+  final id = await dbHelper.insert(row);
+  print("$id");
+}
