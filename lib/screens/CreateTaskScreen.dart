@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../UI.dart';
-import '../utils/Persist.dart';
+import 'package:trust/utils/TaskDatabase.dart';
 import 'dart:math';
 import '../models/Task.dart';
 
@@ -15,7 +15,6 @@ class CreateScreen extends StatefulWidget
     return _CreateScreen(this.task);
   }
 }
-
 class _CreateScreen extends State<CreateScreen> 
 {
   String title;
@@ -23,7 +22,7 @@ class _CreateScreen extends State<CreateScreen>
   _CreateScreen(this.task);
 
   @override
-  Widget build (BuildContext ctxt) 
+  Widget build (BuildContext context) 
   {
     return new Scaffold(
       backgroundColor: Colors.white,
@@ -42,7 +41,6 @@ class CreateHeader extends StatefulWidget
   @override
   _CreateHeader createState() => _CreateHeader();
 }
-
 class _CreateHeader extends State<CreateHeader>
 {
   String topText = 'CREATE A NEW';
@@ -92,22 +90,18 @@ class CreateBody extends StatefulWidget
   @override
   _CreateBody createState() => _CreateBody();
 }
-
 class _CreateBody extends State<CreateBody>
 {
   bool taskname = true; bool taskdisc = true; bool taskammt = true;
-
   double pLn = 20; double pRn = 20; double pRa = 20; double pLa = 20;
-
   String date; String time;
-
-  void updateDate(String _date) {setState(() {date = _date; /* print(_date); */});}
-  void updateTime(String _time) {setState(() {time = _time; /* print(_time); */});}
 
   final nameController = TextEditingController();
   final discController = TextEditingController();
   final ammtController = TextEditingController();
 
+  void updateDate(String _date) {setState(() {date = _date; /* print(_date); */});}
+  void updateTime(String _time) {setState(() {time = _time; /* print(_time); */});}
   void createTask()
   {
     String name = nameController.text;
@@ -120,7 +114,6 @@ class _CreateBody extends State<CreateBody>
     print(disc is String);
     if (check) Navigator.pop(context, [true, name, int.parse(ammt), dateTime, disc]);
   }  
-
   String checkDate(String date, String time)
   {
     final DateTime _dateTime = DateTime.now();
@@ -128,7 +121,6 @@ class _CreateBody extends State<CreateBody>
     time = time ?? _dateTime.toString().split(" ")[1];
     return date + " " + time;
   }
-
   bool checkInputs(String name, String disc, String ammt)
   {
     void shakeName(int i) 
@@ -234,7 +226,6 @@ class InputContainer extends StatefulWidget
 
   _InputContainer createState() => _InputContainer();
 }
-
 class _InputContainer extends State<InputContainer>
 {
   Widget build(BuildContext context)

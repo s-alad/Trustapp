@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'utils/Animations.dart';
 import 'package:trust/main.dart';
 import 'screens/CreateTaskScreen.dart';
 
@@ -7,18 +8,8 @@ typedef void ButtonCallback();
 class Button extends StatelessWidget
 {
   ButtonCallback clicked;
-
   String text;double width;Color color;Color fontColor;double font;double height;
   //preset buttons
-  Button.createtask({this.clicked}) 
-  {
-    this.text = "+"; 
-    this.width = .2; 
-    this.height = .08;
-    this.color = Color.fromRGBO(254, 249, 205, 1); 
-    this.fontColor = Color(0xFF323639); 
-    this.font = 26;
-  }
   Button.create({this.clicked})
   {
     this.text = "CREATE";
@@ -72,6 +63,28 @@ class Button extends StatelessWidget
   }
 }
 
+typedef void ButtonIconCallback();
+class ButtonIcon extends StatelessWidget
+{
+  ButtonIconCallback clicked;
+  Color color;double size;IconData icon;double padding;double density;Color pressed;
+  ButtonIcon({this.color, this.size, this.icon, this.clicked, this.padding, this.density, this.pressed});
+
+  Widget build(BuildContext context)
+  {
+    return IconButton(
+      onPressed: () {clicked();},
+      icon: new Icon(icon, ),
+      splashColor: Colors.transparent,
+      highlightColor: pressed ?? ThemeData().highlightColor,
+      color: color,
+      iconSize: size,
+      padding: EdgeInsets.all(padding ?? 8),
+      visualDensity: VisualDensity(horizontal: density ?? 0, vertical: density ?? 0),
+    );
+  }
+}
+
 typedef void StringCallback(String s);
 class DatePicker extends StatelessWidget
 {
@@ -80,7 +93,6 @@ class DatePicker extends StatelessWidget
   final StringCallback onDateChanged;
   final StringCallback onTimeChanged;
   DatePicker({ @required this.onDateChanged, this.onTimeChanged});
-  
   Widget build(BuildContext context)
   {
     double h = MediaQuery.of(context).size.height;
@@ -134,6 +146,38 @@ class DatePicker extends StatelessWidget
             indent: 32,
             endIndent: 32,
           ),
+        ],
+      ),
+    );
+  }
+}
+
+typedef void NavCallBack();
+class BottomNavBar extends StatelessWidget
+{ 
+  NavCallBack navCallBack;
+  var lRoute;
+  var rRoute;
+  IconData home;
+  BottomNavBar({this.navCallBack, this.lRoute, this.rRoute, this.home});
+  
+  Widget build(BuildContext context)
+  {
+    double w = MediaQuery.of(context).size.width;
+    return  Container(
+      height: 78, 
+      width: w,
+      padding: EdgeInsets.only(left: 42, right: 42),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: 
+        [
+          ButtonIcon(color: Colors.white, size: 38, icon: Icons.date_range, 
+            clicked: () {Navigator.push(context, fadeRoute(rRoute));}),
+          ButtonIcon(color: Color.fromRGBO(254, 249, 205, 1), size: 58, icon: home ?? Icons.add_circle, 
+            clicked: () {navCallBack();}),
+          ButtonIcon(color: Colors.white, size: 38, icon: Icons.assessment, 
+            clicked: () {Navigator.push(context, fadeRoute(lRoute));}),
         ],
       ),
     );

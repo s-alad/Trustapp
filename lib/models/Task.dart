@@ -2,12 +2,12 @@ class Task
 {
   int id;
   String name;
-  String description;
-  int amount;
   String date;
+  int state;
+  int level;
 
-  Task(this.name, this.amount, this.date, [this.description]);
-  Task.withId(this.id, this.name, this.amount, this.date, [this.description]);
+  Task(this.name, this.date, this.level, this.state);
+  Task.withId(this.id, this.name, this.date, this.level, this.state);
 
   Map<String, dynamic> toMap() 
   {
@@ -15,24 +15,24 @@ class Task
     {
       'id': id, 
       'name': name,
-      'amount': amount,
       'date': date,
-      'description': description,
+      'level' : level,
+      'state' : state,
     };
   }
 
   Task.fromMapObject(Map<String, dynamic> map) 
   {
 		this.id = map['id'];
-		this.amount = map['amount'];
-		this.description = map['description'];
 		this.name = map['name'];
 		this.date = map['date'];
+    this.level = map['level'];
+    this.state = map['state'];
 	}
 
   @override
   String toString() 
   {
-    return 'Task{id: $id, name: $name, description: $description, amount: $amount, date: $date}';
+    return 'Task{id: $id, name: $name, date: $date, level: $level, state: $state}';
   }
 }

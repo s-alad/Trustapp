@@ -2,22 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/HomeScreen.dart';
 import 'screens/SignUpScreen.dart';
+import 'package:flutter/services.dart';
 
-void main() => runApp(Start());
+void main() => runApp(App());
 
-class Start extends StatefulWidget 
+class App extends StatefulWidget 
 {
   @override
-  App createState() => new App();
+  _App createState() => new _App();
 }
 
-class App extends State<Start>
+class _App extends State<App>
 {
   bool _seen;
   
   @override
   void initState() 
   {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.white,
+      statusBarBrightness: Brightness.light,
+      statusBarIconBrightness: Brightness.dark, 
+    ));
     _checkFirstTime();
     super.initState();
   }
@@ -40,6 +46,7 @@ class App extends State<Start>
 
   Widget build(BuildContext context) 
   {
+    
     if (_seen == null) return Container();
     if (_seen == false) {_updateFirstTime();}
 
